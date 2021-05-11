@@ -1,4 +1,4 @@
-import sys
+from config import sp_list
 
 
 class CodeBlock:  # mk - code of prog start pos
@@ -152,9 +152,6 @@ class CodeBlock:  # mk - code of prog start pos
 
     # Utils functions
 
-    def to_hex(self, data):
-        return hex(data)[2:].rjust(2, '0')
-
     def execute(self, arg):
         if type(arg) == list:
             if type(arg[0]) == list:
@@ -306,42 +303,13 @@ def postprocess():
 
 main_prog = CodeBlock()
 
-sp_list = {
-    'prog': "prog",
-    'cond': "cond",
-    "while": "oper_while",
-    "break": "oper_break",
-    'setq': "setq",
-    'read': "read",
-    'return': "return_func",
-    'plus': "plus",
-    'minus': "minus",
-    'times': "times",
-    'divide': "divide",
-    'equal': "equal",
-    'nonequal': "nonequal",
-    'less': "less",
-    'lesseq': "lesseq",
-    'greater': "greater",
-    'greatereq': "greatereq",
-    'and': "oper_and",
-    'or': "oper_or",
-    'not': "oper_not"
-}
-
 prog_start = '0000'
 
 functions = {}
 
 
-def main():
+def compile(input_file: str, output_file: str):
     global prog_start
-    try:
-        input_file = sys.argv[2]
-        output_file = sys.argv[4]
-    except Exception as e:
-        print("Problem with arguments: ", e)
-        return 1
     try:
         with open(input_file, mode='r') as f:
             code = f.read().rstrip()
@@ -376,7 +344,3 @@ def main():
     except Exception as e:
         print(f"Problem with output file {output_file}: ", e)
         return 1
-
-
-if __name__ == "__main__":
-    main()
