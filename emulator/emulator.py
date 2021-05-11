@@ -37,14 +37,18 @@ class Stack:
         self.__stk[index] = value
 
     def getElement(self, index, sign=False):
-        return None if index >= self.__stk.__len__() \
-            else fromTwosComplement(self.__stk[index], self.size) \
-            if sign else self.__stk[index]
+        return (
+            None
+            if index >= self.__stk.__len__()
+            else fromTwosComplement(self.__stk[index], self.size)
+            if sign
+            else self.__stk[index]
+        )
 
     #
 
     def pprint(self):
-        messageToPrint = 'Stack: '
+        messageToPrint = "Stack: "
 
         for value in self.__stk:
             if str(value).__len__() > 20:
@@ -62,63 +66,63 @@ class Stack:
 
 
 opcodes = {
-    0x00: ['STOP', 0, 0, 0],
-    0x01: ['ADD', 2, 1, 3],
-    0x02: ['MUL', 2, 1, 5],
-    0x03: ['SUB', 2, 1, 3],
-    0x04: ['DIV', 2, 1, 5],
-    0x05: ['SDIV', 2, 1, 5],
-    0x06: ['MOD', 2, 1, 5],
-    0x07: ['SMOD', 2, 1, 5],
-    0x08: ['ADDMOD', 3, 1, 8],
-    0x09: ['MULMOD', 3, 1, 8],
-    0x0a: ['EXP', 2, 1, 10],
-    0x0b: ['SIGNEXTEND', 2, 1, 5],
-    0x10: ['LT', 2, 1, 3],
-    0x11: ['GT', 2, 1, 3],
-    0x12: ['SLT', 2, 1, 3],
-    0x13: ['SGT', 2, 1, 3],
-    0x14: ['EQ', 2, 1, 3],
-    0x15: ['ISZERO', 1, 1, 3],
-    0x16: ['AND', 2, 1, 3],
-    0x17: ['OR', 2, 1, 3],
-    0x18: ['XOR', 2, 1, 3],
-    0x19: ['NOT', 1, 1, 3],
-    0x1a: ['BYTE', 2, 1, 3],
-    0x1b: ['SHL', 2, 1, 3],
-    0x1c: ['SHR', 2, 1, 3],
-    0x1d: ['SAR', 2, 1, 3],
-    0x35: ['CALLDATALOAD', 1, 1, 3],
-    0x36: ['CALLDATASIZE', 0, 1, 2],
-    0x37: ['CALLDATACOPY', 3, 0, 3],
-    0x3d: ['RETURNDATASIZE', 0, 1, 2],
-    0x3e: ['RETURNDATACOPY', 3, 0, 3],
-    0x50: ['POP', 1, 0, 2],
-    0x51: ['MLOAD', 1, 1, 3],
-    0x52: ['MSTORE', 2, 0, 3],
-    0x53: ['MSTORE8', 2, 0, 3],
-    0x54: ['SLOAD', 1, 1, 50],
-    0x55: ['SSTORE', 2, 0, 0],
-    0x56: ['JUMP', 1, 0, 8],
-    0x57: ['JUMPI', 2, 0, 10],
-    0x58: ['PC', 0, 1, 2],
-    0x59: ['MSIZE', 0, 1, 2],
-    0x5b: ['JUMPDEST', 0, 0, 1],
-    0xf3: ['RETURN', 2, 0, 0],
-    0xf5: ['CALLBLACKBOX', 7, 1, 40],
-    0xfa: ['STATICCALL', 6, 1, 40],
-    0xfd: ['REVERT', 2, 0, 0],
-    0xff: ['SUICIDE', 1, 0, 0]
+    0x00: ["STOP", 0, 0, 0],
+    0x01: ["ADD", 2, 1, 3],
+    0x02: ["MUL", 2, 1, 5],
+    0x03: ["SUB", 2, 1, 3],
+    0x04: ["DIV", 2, 1, 5],
+    0x05: ["SDIV", 2, 1, 5],
+    0x06: ["MOD", 2, 1, 5],
+    0x07: ["SMOD", 2, 1, 5],
+    0x08: ["ADDMOD", 3, 1, 8],
+    0x09: ["MULMOD", 3, 1, 8],
+    0x0A: ["EXP", 2, 1, 10],
+    0x0B: ["SIGNEXTEND", 2, 1, 5],
+    0x10: ["LT", 2, 1, 3],
+    0x11: ["GT", 2, 1, 3],
+    0x12: ["SLT", 2, 1, 3],
+    0x13: ["SGT", 2, 1, 3],
+    0x14: ["EQ", 2, 1, 3],
+    0x15: ["ISZERO", 1, 1, 3],
+    0x16: ["AND", 2, 1, 3],
+    0x17: ["OR", 2, 1, 3],
+    0x18: ["XOR", 2, 1, 3],
+    0x19: ["NOT", 1, 1, 3],
+    0x1A: ["BYTE", 2, 1, 3],
+    0x1B: ["SHL", 2, 1, 3],
+    0x1C: ["SHR", 2, 1, 3],
+    0x1D: ["SAR", 2, 1, 3],
+    0x35: ["CALLDATALOAD", 1, 1, 3],
+    0x36: ["CALLDATASIZE", 0, 1, 2],
+    0x37: ["CALLDATACOPY", 3, 0, 3],
+    0x3D: ["RETURNDATASIZE", 0, 1, 2],
+    0x3E: ["RETURNDATACOPY", 3, 0, 3],
+    0x50: ["POP", 1, 0, 2],
+    0x51: ["MLOAD", 1, 1, 3],
+    0x52: ["MSTORE", 2, 0, 3],
+    0x53: ["MSTORE8", 2, 0, 3],
+    0x54: ["SLOAD", 1, 1, 50],
+    0x55: ["SSTORE", 2, 0, 0],
+    0x56: ["JUMP", 1, 0, 8],
+    0x57: ["JUMPI", 2, 0, 10],
+    0x58: ["PC", 0, 1, 2],
+    0x59: ["MSIZE", 0, 1, 2],
+    0x5B: ["JUMPDEST", 0, 0, 1],
+    0xF3: ["RETURN", 2, 0, 0],
+    0xF5: ["CALLBLACKBOX", 7, 1, 40],
+    0xFA: ["STATICCALL", 6, 1, 40],
+    0xFD: ["REVERT", 2, 0, 0],
+    0xFF: ["SUICIDE", 1, 0, 0],
 }
 
-opcodesMetropolis = {0x3d, 0x3e, 0xfa, 0xfd}
+opcodesMetropolis = {0x3D, 0x3E, 0xFA, 0xFD}
 
 for i in range(1, 33):
-    opcodes[0x5f + i] = ['PUSH' + str(i), 0, 1, 3]
+    opcodes[0x5F + i] = ["PUSH" + str(i), 0, 1, 3]
 
 for i in range(1, 17):
-    opcodes[0x7f + i] = ['DUP' + str(i), i, i + 1, 3]
-    opcodes[0x8f + i] = ['SWAP' + str(i), i + 1, i + 1, 3]
+    opcodes[0x7F + i] = ["DUP" + str(i), i, i + 1, 3]
+    opcodes[0x8F + i] = ["SWAP" + str(i), i + 1, i + 1, 3]
 
 
 def safe_ord(value):
@@ -154,7 +158,7 @@ def fromByteToInt(value: bytes):
 
 def extendMemory(memory: bytearray, toIndex: int):
     to_extend = toIndex - memory.__len__()
-    memory.extend(b'\x00' * to_extend)
+    memory.extend(b"\x00" * to_extend)
     return memory
 
 
@@ -175,15 +179,23 @@ def printError(message):
 
 
 def generateInput(params):
-    calldata = ''
+    calldata = ""
     for i in params:
         calldata += hex(i)[2:].zfill(64)[-64:]
     message = bytearray(bytes.fromhex(calldata))
-    print(f'msg.data: {message}')
+    print(f"msg.data: {message}")
     return message
 
 
-def execute(code: bytearray, stack: Stack, memory: bytearray, storage: dict, msg: bytearray, toprint=False, break_on_pc=None):
+def execute(
+    code: bytearray,
+    stack: Stack,
+    memory: bytearray,
+    storage: dict,
+    msg: bytearray,
+    toprint=False,
+    break_on_pc=None,
+):
     """
     :param code: e.g. b'\0x60\0x01\0x60\0x01\0x01'
     :param stack: Stack() instance
@@ -198,7 +210,6 @@ def execute(code: bytearray, stack: Stack, memory: bytearray, storage: dict, msg
 
         # input()
 
-
         # |60|03|60|04|01|
         #        /\
         #        ||
@@ -212,7 +223,9 @@ def execute(code: bytearray, stack: Stack, memory: bytearray, storage: dict, msg
         opcodename, in_args, out_args, fee = opcodes[opcode]
 
         if len(stack) < in_args:
-            print(f"Error: stack has length {len(stack)} but {opcodename} (PC={pc}) has to have {in_args} input args.")
+            print(
+                f"Error: stack has length {len(stack)} but {opcodename} (PC={pc}) has to have {in_args} input args."
+            )
             return b""
 
         amountOfArgs = 0
@@ -242,14 +255,18 @@ def execute(code: bytearray, stack: Stack, memory: bytearray, storage: dict, msg
             a, b = stack.popTop(sign=True), stack.popTop(sign=True)
             stack.put(0 if b == 0 else a % b)
         elif opcodename == "ADDMOD":
-            a, b, N = stack.popTop(sign=True), \
-                      stack.popTop(sign=True), \
-                      stack.popTop(sign=True)
+            a, b, N = (
+                stack.popTop(sign=True),
+                stack.popTop(sign=True),
+                stack.popTop(sign=True),
+            )
             stack.put(0 if N == 0 else (a + b) % N)
         elif opcodename == "MULMOD":
-            a, b, N = stack.popTop(sign=True), \
-                      stack.popTop(sign=True), \
-                      stack.popTop(sign=True)
+            a, b, N = (
+                stack.popTop(sign=True),
+                stack.popTop(sign=True),
+                stack.popTop(sign=True),
+            )
             stack.put(0 if N == 0 else (a * b) % N)
         elif opcodename == "EXP":
             stack.put(stack.popTop() ** stack.popTop())
@@ -311,9 +328,10 @@ def execute(code: bytearray, stack: Stack, memory: bytearray, storage: dict, msg
             if offset + 32 > len(msg):
                 print(
                     f"Error: message data has length {len(msg)} "
-                    f"but {opcodename} (PC={pc}) refers to [{offset}:{offset + 32}]")
+                    f"but {opcodename} (PC={pc}) refers to [{offset}:{offset + 32}]"
+                )
                 return b""
-            value = msg[offset:offset + 32]
+            value = msg[offset : offset + 32]
             stack.put(fromByteArrayToInt(value))
         elif opcodename == "CALLDATASIZE":
             stack.put(len(msg))
@@ -322,15 +340,17 @@ def execute(code: bytearray, stack: Stack, memory: bytearray, storage: dict, msg
             if destOffset + length > len(memory):
                 print(
                     f"Error: memory has length {len(memory)} "
-                    f"but {opcodename} (PC={pc}) refers to [{destOffset}:{destOffset + length}]")
+                    f"but {opcodename} (PC={pc}) refers to [{destOffset}:{destOffset + length}]"
+                )
                 return b""
             if offset + length > len(msg):
                 print(
                     f"Error: message data has length {len(msg)} "
-                    f"but {opcodename} (PC={pc}) refers to [{offset}:{offset + length}]")
+                    f"but {opcodename} (PC={pc}) refers to [{offset}:{offset + length}]"
+                )
                 return b""
 
-            memory[destOffset:destOffset + length] = msg[offset:offset + length]
+            memory[destOffset : destOffset + length] = msg[offset : offset + length]
 
         # -----------
         # 0x50 - 0x58
@@ -343,18 +363,18 @@ def execute(code: bytearray, stack: Stack, memory: bytearray, storage: dict, msg
             if offset + 32 > len(memory):
                 stack.put(0)
             else:
-                value = memory[offset:offset + 32]
+                value = memory[offset : offset + 32]
                 stack.put(fromByteToInt(value))
         elif opcodename == "MSTORE":
             offset = stack.popTop()
             value = stack.popTop()
             memory = extendMemory(memory, offset)
-            memory[offset:offset + 32] = value.to_bytes(32, byteorder='big')
+            memory[offset : offset + 32] = value.to_bytes(32, byteorder="big")
         elif opcodename == "MSTORE8":
             offset = stack.popTop()
             value = stack.popTop()
             memory = extendMemory(memory, offset)
-            memory[offset:offset + 32] = (value & 0xFF).to_bytes(32, byteorder='big')
+            memory[offset : offset + 32] = (value & 0xFF).to_bytes(32, byteorder="big")
         elif opcodename == "SLOAD":
             key = stack.popTop(sign=True)
             if key in storage:
@@ -370,16 +390,20 @@ def execute(code: bytearray, stack: Stack, memory: bytearray, storage: dict, msg
             destination = stack.popTop()
             if code[destination] not in opcodes:
                 raise Exception(f"Destination {destination} not in opcodes")
-            if code[destination] != 0x5b:
-                print(f"Error: Destination has to be JUMPDEST [0x5B] but it is {code[destination]}. (PC={pc})")
+            if code[destination] != 0x5B:
+                print(
+                    f"Error: Destination has to be JUMPDEST [0x5B] but it is {code[destination]}. (PC={pc})"
+                )
                 return b""
             pc = destination
         elif opcodename == "JUMPI":
             destination, condition = stack.popTop(), stack.popTop()
             if code[destination] not in opcodes:
                 raise Exception(f"Destination {destination} not in opcodes")
-            if code[destination] != 0x5b:
-                print(f"Error: Destination has to be JUMPDEST [0x5B] but it is {code[destination]}. (PC={pc})")
+            if code[destination] != 0x5B:
+                print(
+                    f"Error: Destination has to be JUMPDEST [0x5B] but it is {code[destination]}. (PC={pc})"
+                )
                 return b""
             pc = destination if condition else pc + 1
         elif opcodename == "JUMPDEST":
@@ -393,7 +417,7 @@ def execute(code: bytearray, stack: Stack, memory: bytearray, storage: dict, msg
 
         elif opcodename.startswith("PUSH"):
             amountOfArgs = int(opcodename.replace("PUSH", ""))
-            value = fromByteToInt(code[pc + 1:pc + amountOfArgs + 1])
+            value = fromByteToInt(code[pc + 1 : pc + amountOfArgs + 1])
             stack.put(value)
             pc += amountOfArgs
         elif opcodename.startswith("DUP"):
@@ -413,15 +437,17 @@ def execute(code: bytearray, stack: Stack, memory: bytearray, storage: dict, msg
         elif opcodename == "RETURN":
             offset = stack.popTop()
             length = stack.popTop()
-            return memory[offset:offset + length]
+            return memory[offset : offset + length]
 
         else:
             raise Exception(f"We have not such opcode yet {opcodename}")
 
         if toprint:
-            args = code[pc - amountOfArgs + 1:pc + 1].hex()
-            args = [args[i:i + 2] for i in range(0, len(args), 2)]
-            print(f"[ {opcodename}{' ' if len(args) != 0 else ''}{' '.join(args)} ] has executed.")
+            args = code[pc - amountOfArgs + 1 : pc + 1].hex()
+            args = [args[i : i + 2] for i in range(0, len(args), 2)]
+            print(
+                f"[ {opcodename}{' ' if len(args) != 0 else ''}{' '.join(args)} ] has executed."
+            )
 
             print(f"PC: {hex(pc)}")
 
@@ -430,7 +456,7 @@ def execute(code: bytearray, stack: Stack, memory: bytearray, storage: dict, msg
             pprintMemory(memory)
 
             print(f"Storage: {storage}")
-            print('-' * 10)
+            print("-" * 10)
 
         # If opcode is JUMP or JUMPI instruction, then skip this step
         if not opcodename in ["JUMP", "JUMPI"]:
@@ -438,7 +464,7 @@ def execute(code: bytearray, stack: Stack, memory: bytearray, storage: dict, msg
 
         if break_on_pc != None:
             if pc == break_on_pc:
-                return b''
+                return b""
 
     raise Exception(f"Program finished but no RETURN opcode was met")
 
@@ -458,9 +484,11 @@ def emulate(bytecode: str, input_data: str = "", debug: bool = False):
     # E.g. for the code 6000356020350160005260206000F3
     # and break_on_pc=0x5, the break will happen after
     # the second CALLDATALOAD execution
-    ans = execute(code, stack, memory, storage, test_on_input, toprint=debug, break_on_pc=None)
+    ans = execute(
+        code, stack, memory, storage, test_on_input, toprint=debug, break_on_pc=None
+    )
 
     if len(ans) > 0:
         print(f'RETURNED: {int.from_bytes(bytes(ans), byteorder="big")}')
     else:
-        print(f'RETURNED: none')
+        print(f"RETURNED: none")

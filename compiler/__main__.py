@@ -1,7 +1,7 @@
 import argparse
 from compiler.compiler import compile
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("input_file", type=str, help="Path to F-Stroke file")
     parser.add_argument("output_file", type=str, help="Path to output bytecode file")
