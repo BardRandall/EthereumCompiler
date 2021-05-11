@@ -1,0 +1,11 @@
+Сумма двух чисел
+python3 compiler.py -i examples/ex1.f -o examples/ex1.out
+python3 -m emulator examples/ex1.out -debug
+
+Сумма чисел от 1 до 10
+python3 compiler.py -i examples/ex2.f -o examples/ex2.out
+python3 -m emulator examples/ex2.out -debug
+
+Сумма чисел от 1 до 10 с рекурсией
+python3 compiler.py -i examples/ex3.f -o examples/ex3.out
+python3 -m emulator examples/ex3.out -debug

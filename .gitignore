@@ -139,7 +139,3 @@ cython_debug/
 
 # IDE config
 .idea/
-
-# examples
-# temporary
-examples/
